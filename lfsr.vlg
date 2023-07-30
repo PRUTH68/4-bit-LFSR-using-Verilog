@@ -1,0 +1,18 @@
+module lfsr_3_1(
+d,
+q,
+rst,
+clk );
+input clk;
+input d;
+input rst;
+output [0:3]q;
+reg [0:3]q;
+always@(posedge clk)
+begin
+if(rst && d)
+q<=1'b1;
+else
+q={q[3]^q[3-1],q[0:2]}; //change the taps here for your design
+end
+endmodule
